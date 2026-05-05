@@ -1,0 +1,16 @@
+mental_health_project/
+│
+├── app.py                        ← in ROOT folder
+├── database.db                   ← in ROOT folder
+├── mental_health_model.pkl       ← in ROOT folder
+├── label_encoder.pkl             ← in ROOT folder
+├── feature_columns.pkl           ← in ROOT folder
+│
+├── templates/                    ← folder named exactly "templates"
+│   ├── index.html                ← INSIDE templates folder
+│   ├── history.html              ← INSIDE templates folder
+│   └── stats.html                ← INSIDE templates folder
+│
+└── static/                       ← folder named exactly "static"
+    ├── style.css
+    └── script.js
