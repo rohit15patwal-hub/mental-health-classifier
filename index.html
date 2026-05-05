@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindScan - Registration</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<!-- ── USER REGISTRATION PAGE ── -->
+<div id="register-page">
+
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="logo-mark">🧠</div>
+      <div class="hero-text">
+        <h1>MindScan</h1>
+        <p>AI-powered mental health screening</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <div class="register-card">
+      <div class="reg-icon">👋</div>
+      <h2 class="reg-title">Before we begin</h2>
+      <p class="reg-sub">
+        Tell us a little about yourself. This helps us
+        save your assessment result for future reference.
+      </p>
+
+      <div class="reg-form">
+
+        <div class="field-group">
+          <label class="field-label">Your full name</label>
+          <input type="text" id="reg-name"
+                 class="field-input"
+                 placeholder="Enter your name">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Your age</label>
+          <input type="number" id="reg-age"
+                 class="field-input"
+                 placeholder="Enter your age"
+                 min="10" max="100">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Gender</label>
+          <div class="gender-opts">
+            <button class="gender-btn" data-val="Male" type="button">Male</button>
+            <button class="gender-btn" data-val="Female" type="button">Female</button>
+            <button class="gender-btn" data-val="Other" type="button">Other</button>
+          </div>
+        </div>
+
+        <div class="error-bar hidden" id="reg-error">
+          ⚠ Please fill in all fields before continuing.
+        </div>
+
+        <button class="submit-btn" onclick="registerUser()">
+          Continue to Assessment →
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Quick links -->
+    <div class="quick-links">
+      <a href="/history" class="quick-link">📋 View history</a>
+      <a href="/stats" class="quick-link">📊 View stats</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── ASSESSMENT FORM PAGE ── -->
+<div id="form-page" class="hidden">
+
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="logo-mark">🧠</div>
+      <div class="hero-text">
+        <h1>MindScan</h1>
+        <p>AI-powered mental health screening</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="register-card">
+
+      <div class="reg-icon">📋</div>
+      <h2 class="reg-title">Assessment</h2>
+      <p class="reg-sub">Answer honestly — there are no right or wrong answers.</p>
+
+      <div class="reg-form">
+
+        <!-- Question 1 -->
+        <div class="field-group">
+          <label class="field-label">How often do you feel sad?</label>
+          <div class="opts" data-key="Sadness">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="field-group">
+          <label class="field-label">How often do you feel euphoric?</label>
+          <div class="opts" data-key="Euphoric">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="field-group">
+          <label class="field-label">How often do you feel exhausted?</label>
+          <div class="opts" data-key="Exhausted">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="field-group">
+          <label class="field-label">How often do you have sleep disorder?</label>
+          <div class="opts" data-key="Sleep dissorder">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="field-group">
+          <label class="field-label">How often do you experience mood swings?</label>
+          <div class="opts" data-key="Mood Swing">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="field-group">
+          <label class="field-label">Do you have suicidal thoughts?</label>
+          <div class="opts" data-key="Suicidal thoughts">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="field-group">
+          <label class="field-label">Do you experience anorexia?</label>
+          <div class="opts" data-key="Anorxia">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="field-group">
+          <label class="field-label">Do you respect authority?</label>
+          <div class="opts" data-key="Authority Respect">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="field-group">
+          <label class="field-label">Do you respond aggressively?</label>
+          <div class="opts" data-key="Aggressive Response">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="field-group">
+          <label class="field-label">Do you tend to ignore and move on?</label>
+          <div class="opts" data-key="Ignore & Move-On">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="field-group">
+          <label class="field-label">Do you admit your mistakes?</label>
+          <div class="opts" data-key="Admit Mistakes">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 12 -->
+        <div class="field-group">
+          <label class="field-label">Do you overthink?</label>
+          <div class="opts" data-key="Overthinking">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 13 -->
+        <div class="field-group">
+          <label class="field-label">Do you experience nervous breakdowns?</label>
+          <div class="opts" data-key="Nervous Break-down">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 14 -->
+        <div class="field-group">
+          <label class="field-label">Do you try to explain yourself?</label>
+          <div class="opts" data-key="Try-Explanation">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 15 -->
+        <div class="field-group">
+          <label class="field-label">How is your sexual activity?</label>
+          <div class="opts" data-key="Sexual Activity">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 16 -->
+        <div class="field-group">
+          <label class="field-label">How is your concentration level?</label>
+          <div class="opts" data-key="Concentration">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <!-- Question 17 -->
+        <div class="field-group">
+          <label class="field-label">How is your level of optimism?</label>
+          <div class="opts" data-key="Optimisim">
+            <button class="opt" data-val="Seldom">Seldom</button>
+            <button class="opt" data-val="Sometimes">Sometimes</button>
+            <button class="opt" data-val="Usually">Usually</button>
+            <button class="opt" data-val="Most-Often">Most Often</button>
+          </div>
+        </div>
+
+        <div class="error-bar hidden" id="form-error">
+          ⚠️ Please answer all questions before submitting.
+        </div>
+
+        <button class="submit-btn" onclick="submitAssessment()">
+          Get My Result →
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── RESULT PAGE ── -->
+<div id="result-page" class="hidden">
+
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="logo-mark">🧠</div>
+      <div class="hero-text">
+        <h1>MindScan</h1>
+        <p>Your assessment result</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="register-card">
+      <div class="reg-icon">📊</div>
+      <h2 class="reg-title" id="result-condition">—</h2>
+      <p class="reg-sub" id="result-confidence">Confidence: —</p>
+
+      <div id="result-probs" class="prob-bars"></div>
+
+      <button class="submit-btn" onclick="location.reload()">
+        Take Again →
+      </button>
+    </div>
+  </div>
+</div>
+<!-- JS -->
+
+</body>
+<script src="/static/script.js"></script>
+
+</html>

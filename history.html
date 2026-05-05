@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment History — MindScan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="logo-mark">🧠</div>
+      <div class="hero-text">
+        <h1>MindScan</h1>
+        <p>Assessment history</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <a href="/" class="back-link">← Back to home</a>
+
+    <h2 class="page-title">📋 All Assessments</h2>
+
+    {% if records %}
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Condition</th>
+          <th>Confidence</th>
+          <th>Date & Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in records %}
+        <tr>
+          <td>{{ r['name'] }}</td>
+          <td>{{ r['age'] }}</td>
+          <td>{{ r['gender'] }}</td>
+          <td>
+            <span class="badge-condition
+              badge-{{ r['condition'].replace(' ', '-') }}">
+              {{ r['condition'] }}
+            </span>
+          </td>
+          <td>{{ r['confidence'] }}%</td>
+          <td>{{ r['taken_at'] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% else %}
+    <div class="intro-card">
+      <div class="intro-icon">📭</div>
+      <div class="intro-body">
+        <p class="intro-title">No assessments yet</p>
+        <p class="intro-sub">
+          Nobody has taken the assessment yet.
+          Go back and take the test first!
+        </p>
+      </div>
+    </div>
+    {% endif %}
+
+    <a href="/stats" class="quick-link"
+       style="display:inline-block;margin-top:16px">
+      📊 View statistics →
+    </a>
+  </div>
+
+</body>
+</html>

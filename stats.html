@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statistics — MindScan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="logo-mark">🧠</div>
+      <div class="hero-text">
+        <h1>MindScan</h1>
+        <p>Statistics dashboard</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <a href="/" class="back-link">← Back to home</a>
+
+    <h2 class="page-title">📊 Assessment Statistics</h2>
+
+    <!-- Summary cards -->
+    <div class="stats-grid">
+      <div class="stats-card">
+        <div class="stats-big">{{ total or 0 }}</div>
+        <div class="stats-lbl">Total assessments</div>
+      </div>
+      <div class="stats-card">
+        <div class="stats-big">{{ avg_conf or 0 }}%</div>
+        <div class="stats-lbl">Average confidence</div>
+      </div>
+      <div class="stats-card">
+        <div class="stats-big">
+          {{ condition_counts[0]['condition'].split()[0]
+             if condition_counts else 'N/A' }}
+        </div>
+        <div class="stats-lbl">Most common condition</div>
+      </div>
+    </div>
+
+    <!-- Condition breakdown -->
+    <h3 class="page-title" style="font-size:16px;margin-bottom:14px">
+      Condition breakdown
+    </h3>
+
+    {% for row in condition_counts %}
+    <div class="prob-row" style="margin-bottom:14px">
+      <span class="prob-name">{{ row['condition'] }}</span>
+      <div class="prob-track">
+        <div class="prob-fill"
+             style="width:{{ (row['count'] / total * 100)|round(1) if total else 0 }}%;
+                    background: var(--purple)">
+        </div>
+      </div>
+      <span class="prob-pct">{{ row['count'] }}</span>
+    </div>
+    {% endfor %}
+
+    <!-- Recent assessments -->
+    <h3 class="page-title"
+        style="font-size:16px;margin-top:24px;margin-bottom:14px">
+      Recent assessments
+    </h3>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Condition</th>
+          <th>Confidence</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for r in recent %}
+        <tr>
+          <td>{{ r['name'] }}</td>
+          <td>
+            <span class="badge-condition
+              badge-{{ r['condition'].replace(' ','-') }}">
+              {{ r['condition'] }}
+            </span>
+          </td>
+          <td>{{ r['confidence'] }}%</td>
+          <td>{{ r['taken_at'] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="/history" class="quick-link"
+       style="display:inline-block;margin-top:16px">
+      📋 View full history →
+    </a>
+  </div>
+
+</body>
+</html>
